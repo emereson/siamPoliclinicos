@@ -1,0 +1,38 @@
+.patient__tr {
+  display: flex;
+  width: 100%;
+  border-bottom: 2px solid rgb(59, 190, 199);
+}
+
+.patient__td {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: rgb(247, 255, 254);
+  width: calc(100% / 9);
+  border-right: 2px solid rgb(59, 190, 199);
+  font-size: 0.65em;
+  color: rgb(56, 84, 87);
+  font-weight: 600;
+  padding: 0.8em;
+}
+.patient__tdImg {
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.patient__tdImg img {
+  width: 5em;
+  height: 5em;
+}
+.patient__noBorder {
+  border-right: none;
+}
+@media (max-width: 850px) {
+  .patient__td {
+    min-width: 60px;
+    font-size: 0.4em;
+  }
+}

@@ -1,0 +1,122 @@
+.patients__container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+}
+
+.parients__dates {
+  width: 95%;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(250, 250, 250);
+  padding: 1em;
+  gap: 0.5em;
+}
+.patientsDates__form {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+.patientsDates__form div {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+.patientsDates__form span {
+  color: rgb(255, 132, 0);
+  font-weight: 900;
+}
+
+.patientsDates__form input[type="date"] {
+  padding: 0.5em;
+  color: white !important;
+  font-size: 1.1em;
+  background-color: rgb(255, 150, 38);
+  border: none;
+  border-radius: 0.5em;
+  transition: 0.5s;
+}
+
+.patientsDates__form input[type="date"]:hover {
+  background-color: rgb(59, 190, 199);
+  transition: 0.5s;
+}
+
+.patientsDates__form button {
+  width: 6em;
+  font-size: 1em;
+  font-weight: 600;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  background-color: rgb(255, 150, 38);
+  color: white;
+  transition: 0.5s;
+}
+.patientsDates__form input[type="date"]::-webkit-calendar-picker-indicator {
+  /* Estilos para el icono de calendario en WebKit */
+  /* Por ejemplo: */
+  cursor: pointer;
+  background-image: url(../../../../public/calendar-heart-regular-24.png); /*  Usar una imagen personalizada como icono */
+  /* Otros estilos */
+}
+.patientsDates__form button:hover {
+  background-color: rgb(59, 190, 199);
+  transition: 0.5s;
+}
+/* parients table */
+.patients__table {
+  width: 95%;
+  max-width: 1400px;
+  border-spacing: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(59, 190, 199);
+  border-radius: 0.45em;
+  color: white;
+}
+
+.patients__thead {
+  width: 100%;
+  display: solid;
+  border-bottom: 2px solid rgb(255, 255, 255);
+}
+.patients__tr {
+  width: 100%;
+  display: flex;
+  font-size: 1em;
+  font-weight: 800;
+}
+
+.patients__th {
+  height: 4.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% / 9);
+  border-right: 2px solid rgb(255, 255, 255);
+  font-size: 0.8em;
+  padding: 0.8em;
+}
+
+.patients__tbody {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid rgb(59, 190, 199);
+  border-top: none;
+  border-radius: 0.45em;
+}
+.patient__noBorder {
+  border-right: none;
+}
+
+@media (max-width: 850px) {
+  .patients__th {
+    min-width: 60px;
+    font-size: 0.5em;
+  }
+}

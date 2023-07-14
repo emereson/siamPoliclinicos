@@ -1,0 +1,39 @@
+.banner_container {
+  width: 100%;
+  height: 70vh;
+  max-height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardBanner__container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  position: relative;
+}
+
+.cardBanerImg {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  position: absolute;
+  transition: opacity 1.5s ease;
+}
+
+.closeBanerImg {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  transform: translatex(200%);
+  position: absolute;
+  transition: transform 3s ease, opacity 0.5s ease;
+}
+
+@media (max-width: 800px) {
+  .banner_container {
+    height: 40vh;
+  }
+}
