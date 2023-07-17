@@ -37,6 +37,7 @@ const Login = () => {
         setToken(res.data.access_token);
         localStorage.setItem("access_token", res.data.access_token);
         localStorage.setItem("nom_com", res.data.nom_com);
+        localStorage.setItem("data_Login", JSON.stringify(res.data));
         toast.success("Inicio de sesión exitoso");
         navigate(`/policlinicos/${id}/home`);
       })

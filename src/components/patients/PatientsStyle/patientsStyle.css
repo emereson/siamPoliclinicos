@@ -7,18 +7,61 @@
   padding: 2em;
 }
 
-.parients__dates {
+.seacrh__parients {
+  display: flex;
+  flex-wrap: wrap;
   width: 95%;
-  max-width: 1400px;
+  background-color: rgb(255, 255, 255);
+}
+
+.parients__dni {
+  min-width: 330px;
   display: flex;
   flex-direction: column;
-  background-color: rgb(250, 250, 250);
+  padding: 1em;
+  gap: 0.5em;
+  justify-content: center;
+}
+
+.parientsDni__form {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+.parientsDni__form input {
+  padding: 0.5em;
+  border-radius: 0.5em;
+  border: none;
+  background-color: rgb(255, 150, 38);
+  color: white;
+}
+
+.parientsDni__form button {
+  width: 6em;
+  font-size: 1em;
+  font-weight: 600;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  background-color: rgb(255, 150, 38);
+  color: white;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.parientsDni__form button:hover {
+  background-color: rgb(59, 190, 199);
+  transition: 0.5s;
+}
+.parients__dates {
+  min-width: 330px;
+  display: flex;
+  flex-direction: column;
   padding: 1em;
   gap: 0.5em;
 }
 .patientsDates__form {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 1em;
 }
 .patientsDates__form div {
@@ -55,13 +98,11 @@
   background-color: rgb(255, 150, 38);
   color: white;
   transition: 0.5s;
+  cursor: pointer;
 }
 .patientsDates__form input[type="date"]::-webkit-calendar-picker-indicator {
-  /* Estilos para el icono de calendario en WebKit */
-  /* Por ejemplo: */
   cursor: pointer;
   background-image: url(../../../../public/calendar-heart-regular-24.png); /*  Usar una imagen personalizada como icono */
-  /* Otros estilos */
 }
 .patientsDates__form button:hover {
   background-color: rgb(59, 190, 199);

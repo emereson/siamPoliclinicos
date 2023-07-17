@@ -25,10 +25,132 @@
 }
 .patient__tdImg img {
   width: 5em;
-  height: 5em;
+  height: 6em;
 }
 .patient__noBorder {
   border-right: none;
+}
+.patientPdf__view {
+  position: fixed;
+  left: 0;
+  top: 0;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(18, 18, 18, 0.697);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.patientPdf__relative {
+  width: 90%;
+  height: 85%;
+  position: relative;
+}
+
+.patient__iframe {
+  width: 100%;
+  height: 100%;
+}
+.patiendPdf__data {
+  width: 100%;
+  background-color: black;
+  position: absolute;
+  top: -4em;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em;
+  align-items: center;
+}
+.patiendPdf__data h3 {
+  color: rgb(255, 255, 255);
+  font-size: 2em;
+  padding-left: 1em;
+}
+
+.patiendPdf__options {
+  font-size: 3em;
+  z-index: 10;
+  padding-right: 0.5em;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+.patiendPdf__options span {
+  font-size: 0.55em;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  padding: 0.5em 1em 0.5em 1em;
+  border-radius: 0.5em;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.patiendPdf__options span:hover {
+  background-color: rgb(255, 1, 1);
+  color: white;
+  transition: 0.5s;
+}
+
+.patiendPdf__options p {
+  width: 1em;
+  height: 1em;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  padding: 0.65em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.patiendPdf__options p:hover {
+  background-color: rgb(255, 1, 1);
+  color: white;
+  transition: 0.5s;
+}
+
+.patientBoneScan__relative {
+  width: 90%;
+  height: 85%;
+  position: relative;
+}
+
+.patientBoneScan__img {
+  height: 100%;
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+  padding-top: 5em;
+  gap: 4em;
+  background-color: rgba(0, 0, 0, 0.661);
+}
+
+.patientBoneScan__relative img {
+  width: 45%;
+  height: auto;
+}
+
+.patientPdf__viewInfomtaion {
+  font-weight: 800;
+  text-decoration: underline;
+  font-size: 1.1em;
+  cursor: pointer;
+  color: black;
+  transition: 0.3s;
+}
+
+.patientPdf__viewInfomtaion:hover {
+  color: rgb(249, 6, 6);
+  transition: 0.3s;
 }
 @media (max-width: 850px) {
   .patient__td {
