@@ -1,7 +1,7 @@
 .patient__tr {
   display: flex;
   width: 100%;
-  border-bottom: 2px solid rgb(59, 190, 199);
+  border-bottom: 2px solid var(--tbody-border);
 }
 
 .patient__td {
@@ -9,11 +9,11 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: rgb(247, 255, 254);
+  background-color: var(--td-background);
   width: calc(100% / 9);
-  border-right: 2px solid rgb(59, 190, 199);
+  border-right: 2px solid var(--tbody-border);
   font-size: 0.65em;
-  color: rgb(56, 84, 87);
+  color: var(--td-text);
   font-weight: 600;
   padding: 0.8em;
 }
@@ -82,16 +82,17 @@
   gap: 1em;
 }
 .patiendPdf__options span {
-  font-size: 0.55em;
+  font-size: 0.45em;
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
   padding: 0.5em 1em 0.5em 1em;
   border-radius: 0.5em;
   transition: 0.5s;
   cursor: pointer;
+  border: 2.5px solid white;
 }
 .patiendPdf__options span:hover {
-  background-color: rgb(255, 1, 1);
+  background-color: rgb(0, 0, 0);
   color: white;
   transition: 0.5s;
 }
@@ -99,6 +100,7 @@
 .patiendPdf__options p {
   width: 1em;
   height: 1em;
+  font-size: 0.8em;
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
   padding: 0.65em;
@@ -108,10 +110,11 @@
   border-radius: 50%;
   transition: 0.5s;
   cursor: pointer;
+  border: 2.5px solid white;
 }
 
 .patiendPdf__options p:hover {
-  background-color: rgb(255, 1, 1);
+  background-color: rgb(0, 0, 0);
   color: white;
   transition: 0.5s;
 }
@@ -130,13 +133,14 @@
   align-items: center;
   overflow-y: scroll;
   padding-top: 5em;
-  gap: 4em;
+  gap: 2em;
   background-color: rgba(0, 0, 0, 0.661);
 }
 
 .patientBoneScan__relative img {
   width: 45%;
   height: auto;
+  padding: 1em;
 }
 
 .patientPdf__viewInfomtaion {

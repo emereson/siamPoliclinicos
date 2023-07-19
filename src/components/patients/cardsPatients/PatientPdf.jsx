@@ -6,7 +6,6 @@ const PatientPdf = ({ pdf, patient }) => {
   const storedData = localStorage.getItem("access_token");
 
   const boneScans = patient.rad_det_all;
-  console.log(patient);
   return (
     <div>
       {viewPdf ? (
@@ -42,12 +41,20 @@ const PatientPdf = ({ pdf, patient }) => {
                       alt=""
                     />
                   ))}
+                {boneScans.length > 0 &&
+                  boneScans.map((boneScan) => (
+                    <img
+                      key={boneScan.ide_img}
+                      src={`http://192.168.1.192:3006/poli/radiografia-img/file/${boneScan.ide_img}?token=${storedData}`}
+                      alt=""
+                    />
+                  ))}
               </div>
               <div className="patiendPdf__data">
                 <h3>{patient.nom_pac}</h3>
                 <div className="patiendPdf__options">
                   <span onClick={() => setviewboneScan(false)}>
-                    Ver Informes Medico
+                    Ver Informe Médico
                   </span>
                   <p onClick={() => setviewPdf(false)}>x</p>
                 </div>
@@ -60,7 +67,7 @@ const PatientPdf = ({ pdf, patient }) => {
           className="patientPdf__viewInfomtaion"
           onClick={() => setviewPdf(true)}
         >
-          ver Informe
+          ver Informe Médico
         </span>
       )}
     </div>

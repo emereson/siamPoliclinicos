@@ -1,10 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import tokenCofig from "../../utils/tokenConfig";
 import CardPatient from "./cardsPatients/cardPatient";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import "./PatientsStyle/patientsStyle.css";
+import ReactSelect from "react-select";
+import getToken from "../getToken";
 
 const Patients = () => {
   const currentDate = new Date().toISOString().split("T")[0];
@@ -14,37 +14,60 @@ const Patients = () => {
   const [date2, setdate2] = useState(currentDate);
   const [dni, setdni] = useState();
   const [providers, setProviders] = useState();
+  const [providersName, setProvidersName] = useState();
+  const token = getToken();
+  const validDate = date2.replace(/-/g, "") - date1.replace(/-/g, "");
+
+  const handleSubmitProviders = (selectedOption) => {
+    setProviders(selectedOption.value);
+    setProvidersName(selectedOption);
+  };
+
+  const options = dataLogin?.proveedores.map((proveedor) => ({
+    value: proveedor.ide_prv,
+    label: proveedor.nom_cli,
+  }));
 
   useEffect(() => {
     if (providers) {
-      const url = `http://192.168.1.192:3006/poli/poli-vistas/vw_his_cli_web_plus?fch_ini=${date1}&fch_fin=${date2}&ide_prv=${providers}${
+      const url = `${
+        import.meta.env.VITE_URL_GLOBAL
+      }/poli/poli-vistas/vw_his_cli_web_plus?fch_ini=${date1}&fch_fin=${date2}&ide_prv=${providers}${
         dni ? `&dni_pac=${dni}` : ""
       }`;
-      axios
-        .get(url, tokenCofig)
-        .then((res) => {
-          if (!res.data) {
-            res.data = [];
-            toast.error(
-              "No se encontro ningun registro  📌",
 
-              {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-              }
-            );
+      if (validDate > 15) {
+        toast.error(
+          "El rango de las fechas no debe ser mayor de 15 dias  📌",
+
+          {
+            position: "top-right",
+            autoClose: 3000,
+            theme: "dark",
           }
-          setpatients(res.data);
-        })
-        .catch((err) => console.log(err));
+        );
+      } else {
+        axios
+          .get(url, token)
+          .then((res) => {
+            if (!res.data) {
+              res.data = [];
+              toast.error(
+                "No se encontro ningun registro  📌",
+
+                {
+                  position: "top-right",
+                  autoClose: 2000,
+                  theme: "dark",
+                }
+              );
+            }
+            setpatients(res.data);
+          })
+          .catch((err) => console.log(err));
+      }
     }
-  }, [date1, date2, providers]);
+  }, [date1, date2, providers, dni]);
 
   useEffect(() => {
     const storedData = localStorage.getItem("data_Login");
@@ -53,6 +76,7 @@ const Patients = () => {
       setDataLogin(data);
       setTimeout(() => {
         setProviders(data?.proveedores[0]?.ide_prv);
+        localStorage.setItem("ide_eje", data.ide_eje);
       }, 0);
     }
   }, []);
@@ -82,6 +106,7 @@ const Patients = () => {
 
     setdate1(input1);
     setdate2(input2);
+    setdni("");
   };
 
   const handleSubmitDni = (e) => {
@@ -90,10 +115,9 @@ const Patients = () => {
     setdni(input);
   };
 
-  const handleSubmitProviders = (e) => {
-    e.preventDefault();
-    const select = e.target.value;
-    setProviders(select);
+  const handleClick = () => {
+    localStorage.clear();
+    window.location.reload();
   };
 
   return (
@@ -110,30 +134,35 @@ const Patients = () => {
         pauseOnHover
         theme="dark"
       />
-      <section>
-        <h4>Bienvenido</h4>
-        <h3>{dataLogin?.nom_com}</h3>
-        <button>cerrar sesion</button>
+      <section className="patients__welcome">
+        <div className="patientsWelcome__data">
+          <div className="patienetsWelcome__name">
+            <h4>¡Bienvenido!</h4>
+            <h3>{dataLogin?.nom_com}</h3>
+          </div>
+          <button onClick={handleClick}>Cerrar sesión</button>
+        </div>
       </section>
-      <div>
-        <select name="" id="" onChange={handleSubmitProviders}>
-          {dataLogin?.proveedores.map((proveedor) => (
-            <option key={proveedor.ide_prv} value={proveedor.ide_prv}>
-              {proveedor.nom_cli}
-            </option>
-          ))}
-        </select>
+      <div className="patients__providers">
+        <h3>Seleccionar Proveedor:</h3>
+        <ReactSelect
+          className="patientsProviders__select"
+          options={options}
+          value={providersName}
+          placeholder={dataLogin?.proveedores[0].nom_cli}
+          onChange={handleSubmitProviders}
+        />
       </div>
       <div className="seacrh__parients">
-        <div className="parients__dni" onSubmit={handleSubmitDni}>
-          <h3>Buscar port DNI:</h3>
-          <form className="parientsDni__form" action="">
-            <input type="" placeholder="dni:12345678" />
+        <div className="parients__dni">
+          <h3>Filtrar port DNI:</h3>
+          <form className="parientsDni__form" onSubmit={handleSubmitDni}>
+            <input id="input__dni" placeholder={"dni:12345678"} maxLength={8} />
             <button>Buscar</button>
           </form>
         </div>
         <div className="parients__dates">
-          <h3>Buscar por fechas</h3>
+          <h3>Filtrar por fechas</h3>
           <form className="patientsDates__form" onSubmit={handleSubmit}>
             <div>
               <span>Fecha de Inicio:</span>

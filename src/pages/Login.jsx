@@ -9,15 +9,13 @@ import "./pagesStyle/loginStyle.css";
 
 const Login = () => {
   const { register, handleSubmit, reset } = useForm();
-  const [token, setToken] = useState(null);
   const { id } = useParams();
   const navigate = useNavigate();
-  const [tokenExists, setTokenExists] = useState(false);
+  const [rotColor, setrotColor] = useState();
 
   useEffect(() => {
     const checkToken = localStorage.getItem("access_token");
     if (checkToken) {
-      setTokenExists(true);
       navigate(`/policlinicos/${id}/home`);
     }
   }, [id, navigate]);
@@ -33,21 +31,32 @@ const Login = () => {
     axios
       .post(url, requestData)
       .then((res) => {
-        console.log(res.data);
-        setToken(res.data.access_token);
         localStorage.setItem("access_token", res.data.access_token);
         localStorage.setItem("nom_com", res.data.nom_com);
+        localStorage.setItem("ide_eje", res.data.data_Login);
         localStorage.setItem("data_Login", JSON.stringify(res.data));
-        toast.success("Inicio de sesión exitoso");
         navigate(`/policlinicos/${id}/home`);
       })
       .catch((err) => {
         console.log(err);
-        toast.error("Correo electrónico o contraseña incorrectos");
+        toast.error("Usuario o contraseña incorrectos");
       });
 
     reset();
   };
+  useEffect(() => {
+    const url2 = `http://192.168.1.192:3006/poli/funciones/fn_obt_detalles_poli_web?ide_eje=${id}`;
+
+    axios
+      .get(url2)
+      .then((res) => {
+        setrotColor(res.data.colores_css);
+        Object.entries(rotColor).forEach(([variable, valor]) => {
+          document.documentElement.style.setProperty(variable, valor);
+        });
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div className="longin__container">
@@ -62,7 +71,7 @@ const Login = () => {
         </div>
         <div className="longin__div">
           <label htmlFor="ccpassword">Contraseña:</label>
-          <input {...register("ccpassword")} id="ccpassword" type="text" />
+          <input {...register("ccpassword")} id="ccpassword" type="password" />
         </div>
         <button>Iniciar sesión</button>
       </form>

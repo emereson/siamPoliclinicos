@@ -20,7 +20,7 @@
   padding: 3em;
   padding-bottom: 4.5em;
   position: relative;
-  background-color: rgb(56, 66, 78);
+  background-color: var(--loginForm-background);
   overflow: hidden;
 }
 .longin__form h2 {
@@ -56,7 +56,7 @@
 }
 
 .longin__div label {
-  color: rgb(241, 241, 241);
+  color: var(--loginForm-color);
   font-weight: 600;
   font-size: 1.3em;
 }
@@ -66,10 +66,10 @@
   border-radius: 0.5em;
   border: none;
   height: 1.8em;
-  background-color: rgba(255, 255, 255, 0.897);
+  background-color: var(--loginInput-background);
   padding-left: 1em;
   font-size: 1.3em;
-  color: rgb(56, 66, 78);
+  color: var(rgb(56, 66, 78));
 }
 .longin__div input:hover {
   box-shadow: 0 0 1em 0.1em rgba(255, 255, 255, 0.342);
@@ -80,16 +80,16 @@
   font-size: 1.3em;
   font-weight: 600;
   border: 2.5px solid rgb(241, 241, 241);
-  background-color: white;
+  background-color: var(--loginButton-background);
   border-radius: 0.8em;
-  color: rgb(56, 66, 78);
+  color: var(--loginButton-color);
   cursor: pointer;
   transition: 0.5s;
 }
 
 .longin__form button:hover {
-  background-color: rgb(56, 66, 78);
-  color: rgb(241, 241, 241);
+  background-color: var(--loginButton-color);
+  color: var(--loginButton-background);
   transition: 0.5s;
 }
 

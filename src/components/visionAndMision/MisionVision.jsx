@@ -27,7 +27,7 @@ const MisionVision = () => {
         <>
           <img className="mision__img" src="./mision.png" alt="" />
           <div className="mision__container">
-            <h1>Mision</h1>
+            <h1>Misión</h1>
             <div
               className="mision__div"
               dangerouslySetInnerHTML={{
@@ -37,7 +37,7 @@ const MisionVision = () => {
           </div>
           <img className="vision__img" src="./vision.png" alt="" />
           <div className="vision__container">
-            <h1>Vision</h1>
+            <h1>Visión</h1>
             <div
               className="vision__div"
               dangerouslySetInnerHTML={{

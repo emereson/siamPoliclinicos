@@ -13,8 +13,32 @@
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #515151;
+  background-color: rgb(56, 66, 78);
   border-radius: 5px;
+}
+
+:root {
+  --loginForm-background: rgb(56, 66, 78);
+  --loginForm-color: rgb(241, 241, 241);
+  --loginInput-background: rgba(255, 255, 255, 0.897);
+  --loginButton-color: rgb(56, 66, 78);
+  --loginButton-background: rgb(255, 255, 255);
+  --title: rgb(255, 255, 255);
+  --subtitle: rgb(242, 242, 242);
+  --background-title: rgb(59, 190, 199);
+  --button-color: rgb(59, 190, 199);
+  --button-background: rgb(255, 255, 255);
+  --title-providers: rgb(34, 156, 165);
+  --search-text: rgb(83, 82, 81);
+  --search-color: rgb(255, 255, 255);
+  --search-button: rgb(255, 150, 38);
+  --search-button-hover: rgb(59, 190, 199);
+  --table-color: white;
+  --table-background: rgb(59, 190, 199);
+  --table-border: rgb(255, 255, 255);
+  --tbody-border: rgb(59, 190, 199);
+  --td-background: rgb(247, 255, 254);
+  --td-text: rgb(56, 84, 87);
 }
 
 body {
@@ -31,6 +55,7 @@ body {
 h1,
 h2,
 h3,
+h4,
 p,
 ul {
   margin-top: 0;
