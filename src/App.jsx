@@ -5,6 +5,7 @@ const Home = lazy(() => import("./pages/Home"));
 const Login = lazy(() => import("./pages/Login"));
 import "react-toastify/dist/ReactToastify.css";
 import LoaderPage from "./pages/LoaderPage";
+import PatientRecords from "./components/patientRecords/PatientRecords";
 const ProtectedRoutes = lazy(() => import("./components/ProptecteRoute"));
 
 const ScrollToTop = () => {
@@ -25,6 +26,7 @@ function App() {
         <Routes>
           <Route path="/policlinicos/:id">
             <Route path="login" element={<Login />} />
+            <Route path="registros-paciente" element={<PatientRecords />} />
             <Route element={<ProtectedRoutes />}>
               <Route path="home" element={<Home />} />
             </Route>

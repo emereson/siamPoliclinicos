@@ -8,38 +8,28 @@
   padding-bottom: 4em;
 }
 
-.longin__form {
+.loginForm__container {
+  position: absolute;
+  top: 0;
   width: 100%;
   height: 100vh;
-  max-height: 800px;
+  max-height: 1000px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2em;
-  padding: 3em;
-  padding-bottom: 4.5em;
-  position: relative;
+  flex-wrap: wrap;
   background-color: var(--loginForm-background);
-  overflow: hidden;
+  padding: 1em;
 }
-.longin__form h2 {
-  color: white;
-  font-size: 2.3em;
-}
-
 .login__wave {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 100px;
+  height: 50px;
   border: none;
   background-image: url(/wave.png);
-  background-size: 600px 100px;
-  animation: wave 15s linear infinite;
+  background-size: 400px 50px;
+  animation: wave 25s linear infinite;
 }
-
 @keyframes wave {
   0% {
     background-position-x: 0;
@@ -47,6 +37,100 @@
   100% {
     background-position-x: 600px;
   }
+}
+.loginForm__img {
+  width: 50%;
+  min-width: 350px;
+  height: 100%;
+  max-height: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginForm__img img {
+  width: 90%;
+  max-width: 600px;
+  height: 70%;
+  transform: scaleX(-1);
+}
+/* login formm slider */
+.loginForm__slider {
+  width: 50%;
+  max-width: 600px;
+  min-width: 350px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 4em;
+  padding: 3em;
+  padding-bottom: 4.5em;
+  overflow: hidden;
+}
+.loginForm__slider h2 {
+  color: white;
+  font-size: 1.5em;
+  width: 350px;
+  padding-left: 0.4em;
+}
+.loginForm__ul {
+  position: relative;
+  width: 350px;
+  color: white;
+  display: flex;
+  font-weight: 600;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+.loginFormUl__animation {
+  position: absolute;
+  bottom: -0.9em;
+  width: 100%;
+  height: 0.6em;
+  border-radius: 0.5em;
+  background-color: rgb(104, 105, 105);
+}
+.loginAnimation__span {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  border-radius: 1em;
+  background-color: rgb(2, 238, 255);
+  box-shadow: 0em -0.3em 1.2em 0.3em rgb(2, 238, 255);
+  transition: 0.5s;
+  transform: translatex(0);
+}
+
+.loginForm__li {
+  width: 50%;
+  font-size: 1.3em;
+  text-align: center;
+  cursor: pointer;
+  z-index: 5;
+}
+
+/* login all containers form */
+
+.loginAllContainters__form {
+  width: 100%;
+  height: 40%;
+  position: relative;
+}
+.loginFom__polyclinic,
+.clinical__histories {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 2em;
+  transition: 0.5s;
+  transform: translatex(0%);
+  padding-left: 1em;
 }
 
 .longin__div {
@@ -58,11 +142,11 @@
 .longin__div label {
   color: var(--loginForm-color);
   font-weight: 600;
-  font-size: 1.3em;
+  font-size: 1.1em;
 }
 
 .longin__div input {
-  min-width: 250px;
+  min-width: 330px;
   border-radius: 0.5em;
   border: none;
   height: 1.8em;
@@ -75,9 +159,10 @@
   box-shadow: 0 0 1em 0.1em rgba(255, 255, 255, 0.342);
 }
 
-.longin__form button {
-  padding: 0.7em;
-  font-size: 1.3em;
+.loginFom__polyclinic button {
+  margin-left: 0.5em;
+  padding: 0.6em;
+  font-size: 1.1em;
   font-weight: 600;
   border: 2.5px solid rgb(241, 241, 241);
   background-color: var(--loginButton-background);
@@ -87,10 +172,62 @@
   transition: 0.5s;
 }
 
-.longin__form button:hover {
+.loginFom__polyclinic button:hover {
+  background-color: var(--loginButton-color);
+  color: var(--loginButton-background);
+  transition: 0.5s;
+}
+.clinical__histories button {
+  margin-left: 0.5em;
+  padding: 0.6em;
+  font-size: 1.1em;
+  font-weight: 600;
+  border: 2.5px solid rgb(241, 241, 241);
+  background-color: var(--loginButton-background);
+  border-radius: 0.8em;
+  color: rgb(36, 36, 36);
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.clinical__histories button:hover {
   background-color: var(--loginButton-color);
   color: var(--loginButton-background);
   transition: 0.5s;
 }
 
 /* animation */
+
+@media (max-width: 800px) {
+  .loginForm__container {
+    position: relative;
+    height: auto;
+    max-height: none;
+    padding: 0;
+    margin: 0;
+  }
+  .loginForm__img {
+    padding: 0;
+    width: 100%;
+  }
+  .loginForm__slider {
+    width: 100%;
+    max-width: none;
+    height: 600px;
+    padding: 1em;
+    justify-content: center;
+    align-items: center;
+  }
+  .loginForm__ul {
+    width: 100%;
+    max-width: 340px;
+  }
+  .longin__div input {
+    width: 100%;
+  }
+  .loginFom__polyclinic,
+  .clinical__histories {
+    justify-content: center;
+    align-items: center;
+  }
+}

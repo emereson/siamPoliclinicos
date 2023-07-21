@@ -12,6 +12,9 @@ const Login = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [rotColor, setrotColor] = useState();
+  const [formSlider, setformSlider] = useState(true);
+  const [dniPatient, setdniPatient] = useState();
+  const [emailPatient, setemailPatient] = useState();
 
   useEffect(() => {
     const checkToken = localStorage.getItem("access_token");
@@ -44,37 +47,127 @@ const Login = () => {
 
     reset();
   };
-  useEffect(() => {
-    const url2 = `http://192.168.1.192:3006/poli/funciones/fn_obt_detalles_poli_web?ide_eje=${id}`;
 
-    axios
-      .get(url2)
-      .then((res) => {
-        setrotColor(res.data.colores_css);
-        Object.entries(rotColor).forEach(([variable, valor]) => {
-          document.documentElement.style.setProperty(variable, valor);
+  const handleSubmitPatient = (data) => {
+    const input1 = data.target[0].value; // Accede al valor del campo de entrada date1
+    const input2 = data.target[1].value; // Accede al valor del campo de entrada date2
+    setdniPatient(input1);
+    setemailPatient(input2);
+  };
+
+  useEffect(() => {
+    const url = `http://192.168.1.192:3006/poli/funciones/fn_trae_historial_clinico/${dniPatient}/${emailPatient}`;
+    if (dniPatient && emailPatient) {
+      axios
+        .get(url)
+        .then((res) => {
+          console.log(res.data);
+          localStorage.setItem("patientRecords", JSON.stringify(res.data));
+          navigate(`/policlinicos/${id}/registros-paciente`);
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.error("Usuario o contraseña incorrectos");
         });
-      })
-      .catch((err) => console.log(err));
-  }, []);
+    }
+  }, [dniPatient, emailPatient]);
+
+  // useEffect(() => {
+  //   const url2 = `http://192.168.1.192:3006/poli/funciones/fn_obt_detalles_poli_web?ide_eje=${id}`;
+
+  //   axios
+  //     .get(url2)
+  //     .then((res) => {
+  //       setrotColor(res.data.colores_css);
+  //       Object.entries(rotColor).forEach(([variable, valor]) => {
+  //         document.documentElement.style.setProperty(variable, valor);
+  //       });
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
 
   return (
     <div className="longin__container">
       <Banner />
       <ToastContainer />
-      <form className="longin__form" onSubmit={handleSubmit(submit)}>
+      <div className="loginForm__container">
         <div className="login__wave"></div>
-        <h2>Ingresar</h2>
-        <div className="longin__div">
-          <label htmlFor="cidusuario">Usuario :</label>
-          <input {...register("cidusuario")} id="cidusuario" type="text" />
+        <dir className="loginForm__img">
+          <img src="/doctor3d.png" alt="" />
+        </dir>
+        <div className="loginForm__slider">
+          <ul className="loginForm__ul">
+            <li className="loginFormUl__animation">
+              <span
+                className="loginAnimation__span"
+                style={
+                  formSlider
+                    ? { transform: "translatex(0)" }
+                    : { transform: "translatex(100%)" }
+                }
+              ></span>
+            </li>
+            <li className="loginForm__li" onClick={() => setformSlider(true)}>
+              Empresa
+            </li>
+            <li className="loginForm__li" onClick={() => setformSlider(false)}>
+              Paciente
+            </li>
+          </ul>
+          {formSlider ? <h2>Ingresar</h2> : <h2>Buscar</h2>}
+          <div className="loginAllContainters__form">
+            <form
+              className="loginFom__polyclinic"
+              onSubmit={handleSubmit(submit)}
+              style={
+                formSlider
+                  ? { transform: "translatex(0)" }
+                  : { transform: "translatex(-150%)" }
+              }
+            >
+              <div className="longin__div">
+                <label htmlFor="cidusuario">Usuario :</label>
+                <input
+                  {...register("cidusuario")}
+                  id="cidusuario"
+                  type="text"
+                />
+              </div>
+              <div className="longin__div">
+                <label htmlFor="ccpassword">Contraseña:</label>
+                <input
+                  {...register("ccpassword")}
+                  id="ccpassword"
+                  type="password"
+                />
+              </div>
+              <button>Iniciar sesión</button>
+            </form>
+            <form
+              className="clinical__histories"
+              onSubmit={handleSubmitPatient}
+              style={
+                !formSlider
+                  ? { transform: "translatex(0)" }
+                  : { transform: "translatex(150%)" }
+              }
+            >
+              <div className="longin__div">
+                <label htmlFor="dniPatient">
+                  Número de Documento <span>(DNI, otros)</span>
+                </label>
+                <input id="dniPatient" type="text" />
+              </div>
+              <div className="longin__div">
+                <label htmlFor="emailPatient">Correo Electrónico:</label>
+                <input id="emailPatient" type="email" />
+              </div>
+              <button>Buscar Registros Clínicos</button>
+            </form>
+          </div>
         </div>
-        <div className="longin__div">
-          <label htmlFor="ccpassword">Contraseña:</label>
-          <input {...register("ccpassword")} id="ccpassword" type="password" />
-        </div>
-        <button>Iniciar sesión</button>
-      </form>
+      </div>
+
       <MisionVision />
     </div>
   );

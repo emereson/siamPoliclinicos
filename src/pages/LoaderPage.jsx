@@ -5,10 +5,10 @@ const LoaderPage = () => {
 
   const timer = setTimeout(() => {
     setcloseloader(false);
-  }, 1000);
+  }, 500);
   return (
     <div className={closeloader ? "loaderPage__container" : "close__loader"}>
-      <i class="bx bxs-donate-heart"></i>
+      <i className="bx bxs-donate-heart"></i>
       <span>Loading...</span>
     </div>
   );

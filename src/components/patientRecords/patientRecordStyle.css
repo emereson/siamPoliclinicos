@@ -1,0 +1,238 @@
+.patientRecords__container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  background: fixed linear-gradient(145deg, rgb(17, 237, 252), rgb(0, 72, 77));
+}
+
+.patientRecords__header {
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  height: 5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.773);
+}
+
+.patientRecords__header h1 {
+  font-size: 2em;
+  font-weight: 600;
+  color: white;
+}
+
+.patientRecords__header button {
+  position: absolute;
+  right: 1em;
+  padding: 1em;
+  font-weight: 600;
+  background-color: transparent;
+  border: 1.5px solid rgb(17, 252, 248);
+  color: rgb(17, 252, 248);
+  font-size: 1em;
+  border-radius: 0.3em;
+  cursor: pointer;
+  transition: 0.8s;
+}
+
+.patientRecords__header button:hover {
+  border: 1.5px solid rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+  transition: 0.8s;
+}
+.cardPatientRecord__container {
+  width: 100%;
+  max-width: 1600px;
+  padding: 1em;
+  padding-top: 6em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 2em;
+}
+
+.cardPatientRecord__container h2 {
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+  font-size: 1.5em;
+}
+.cardPatientRecord__container button {
+  padding: 1em;
+  font-size: 0.9em;
+  font-weight: 600;
+  border: 1.5px solid rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+  background-color: rgba(73, 73, 73, 0.557);
+  border-radius: 0.5em;
+  cursor: pointer;
+  margin-left: 0.5em;
+  transition: 0.5s;
+}
+
+.cardPatientRecord__container button:hover {
+  background-color: rgba(0, 0, 0, 0.548);
+  border: 1.5px solid rgb(17, 252, 248);
+  color: rgb(122, 255, 253);
+  transition: 0.5s;
+}
+.clinicHistory__container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 3em;
+  padding: 1em 0em 1em 0em;
+}
+.clinicHistory__ul {
+  width: 330px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1em;
+  justify-content: center;
+  gap: 1em;
+  padding: 1em;
+  overflow: hidden;
+  background-color: rgba(56, 56, 56, 0.513);
+  color: rgb(0, 0, 0);
+  box-shadow: 0 0 0.3em 0.1em rgba(45, 45, 45, 0.527);
+  position: relative;
+}
+
+.clinicHistory__li {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: centerrgb(255, 255, 255);
+  gap: 0.5em;
+  font-size: 0.9em;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.896);
+}
+.clinicHistory__li p {
+  font-size: 0.8em;
+  padding-top: 0.35em;
+  color: white;
+}
+/* clinic history selected */
+
+.clinicHistory__selectedContianer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3em;
+  background-color: rgba(49, 59, 59, 0.9);
+  z-index: 10;
+  padding: 2em;
+}
+.clinicHistory__selectedContianer h2 {
+  text-align: center;
+  color: white;
+}
+.clinicHistory__selectedContianer h3 {
+  color: rgb(235, 235, 235);
+  text-align: center;
+}
+
+.clinicHistorySelectd__div {
+  width: 80%;
+  max-width: 1400px;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  gap: 3em;
+  overflow-y: auto;
+}
+
+.clinicHistorySelectd__ul {
+  width: 330px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1em;
+  justify-content: center;
+  gap: 1em;
+  padding: 1em;
+  overflow: hidden;
+  background-color: rgba(93, 99, 100, 0.788);
+  box-shadow: 0 0 0.3em 0.1em rgba(93, 99, 100, 0.761);
+  position: relative;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.clinicHistorySelectd__ul:hover {
+  scale: 1.05;
+  transition: 0.5s;
+}
+
+.selected {
+  background-color: rgba(163, 163, 163, 0.81);
+}
+.clinicHistorySelectd__buttons {
+  display: flex;
+  gap: 1.5em;
+}
+
+.clinicHistorySelectd__buttons button {
+  padding: 0.5em 1.5em 0.5em 1.5em;
+  font-size: 1.2em;
+  cursor: pointer;
+  overflow: hidden;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.304);
+}
+
+@media (max-width: 850px) {
+  .patientRecords__header {
+    justify-content: start;
+    padding: 1em;
+    height: 4em;
+  }
+  .patientRecords__header h1 {
+    font-size: 1.2em;
+  }
+  .patientRecords__header button {
+    font-size: 0.7em;
+  }
+  .cardPatientRecord__container h2 {
+    font-size: 0.9em;
+  }
+  .cardPatientRecord__container button {
+    font-size: 0.85em;
+  }
+  .clinicHistory__selectedContianer {
+    padding: 1em;
+  }
+  .clinicHistory__li {
+    font-size: 0.75em;
+  }
+
+  .clinicHistory__li p {
+    padding-top: 0.2em;
+    font-size: 0.8em;
+  }
+  .clinicHistorySelectd__div {
+    width: 100%;
+  }
+  .clinicHistory__selectedContianer h3 {
+    font-size: 0.9em;
+  }
+  .clinicHistorySelectd__ul:hover {
+    scale: none;
+  }
+}

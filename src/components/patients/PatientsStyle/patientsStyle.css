@@ -248,7 +248,7 @@ patients welcome */
   border: 2px solid var(--tbody-border);
   border-top: none;
   border-radius: 0.45em;
-  min-height: 500px;
+  min-height: 300px;
   background-color: white;
 }
 .patient__noBorder {

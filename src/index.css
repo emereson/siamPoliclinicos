@@ -18,10 +18,10 @@
 }
 
 :root {
-  --loginForm-background: rgb(56, 66, 78);
+  --loginForm-background: rgba(0, 0, 0, 0.735);
   --loginForm-color: rgb(241, 241, 241);
   --loginInput-background: rgba(255, 255, 255, 0.897);
-  --loginButton-color: rgb(56, 66, 78);
+  --loginButton-color: rgba(0, 0, 0, 0.501);
   --loginButton-background: rgb(255, 255, 255);
   --title: rgb(255, 255, 255);
   --subtitle: rgb(242, 242, 242);
