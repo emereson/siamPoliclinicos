@@ -3,7 +3,6 @@ import Banner from "../components/Baneer/Banner";
 import "./pagesStyle/homeStyle.css";
 import Patients from "../components/patients/Patients";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
 import LoaderPage from "./LoaderPage";
 
 const Home = () => {

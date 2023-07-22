@@ -11,7 +11,7 @@ const Login = () => {
   const { register, handleSubmit, reset } = useForm();
   const { id } = useParams();
   const navigate = useNavigate();
-  const [rotColor, setrotColor] = useState();
+
   const [formSlider, setformSlider] = useState(true);
   const [dniPatient, setdniPatient] = useState();
   const [emailPatient, setemailPatient] = useState();
