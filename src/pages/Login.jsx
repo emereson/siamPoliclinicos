@@ -61,12 +61,10 @@ const Login = () => {
       axios
         .get(url)
         .then((res) => {
-          console.log(res.data);
           localStorage.setItem("patientRecords", JSON.stringify(res.data));
           navigate(`/policlinicos/${id}/registros-paciente`);
         })
         .catch((err) => {
-          console.log(err);
           toast.error("Usuario o contraseña incorrectos");
         });
     }
