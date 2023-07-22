@@ -72,20 +72,6 @@ const Login = () => {
     }
   }, [dniPatient, emailPatient]);
 
-  // useEffect(() => {
-  //   const url2 = `http://192.168.1.192:3006/poli/funciones/fn_obt_detalles_poli_web?ide_eje=${id}`;
-
-  //   axios
-  //     .get(url2)
-  //     .then((res) => {
-  //       setrotColor(res.data.colores_css);
-  //       Object.entries(rotColor).forEach(([variable, valor]) => {
-  //         document.documentElement.style.setProperty(variable, valor);
-  //       });
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
-
   return (
     <div className="longin__container">
       <Banner />
