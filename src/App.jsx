@@ -20,8 +20,8 @@ const ScrollToTop = () => {
 function App() {
   return (
     <div>
-      <ScrollToTop />
       <LoaderPage />
+      <ScrollToTop />
       <Suspense>
         <Routes>
           <Route path="/policlinicos/:id">
