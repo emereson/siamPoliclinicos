@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import CardPatient from "./cardsPatients/cardPatient";
+import CardPatient from "./cardsPatients/CardPatient";
 import { ToastContainer, toast } from "react-toastify";
 import "./PatientsStyle/patientsStyle.css";
 import ReactSelect from "react-select";
