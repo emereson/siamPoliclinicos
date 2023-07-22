@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import "./pagesStyle/loginStyle.css";
+import "./pagesStyle/LoginStyle.css";
 import Banner from "../components/Baneer/Banner";
 import MisionVision from "../components/visionAndMision/MisionVision";
 
